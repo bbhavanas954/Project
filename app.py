@@ -27,14 +27,14 @@ app = Flask(__name__, template_folder='templates')
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///exam_system.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = 'cc03272a13a9dd074ab717faa23405e0e3e41a1fb3a248a4e6c3e4399d3a5b86'
+app.config['SECRET_KEY'] = ''
 app.config['SESSION_PERMANENT'] = False  # Ensure sessions are not permanent
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-GEMINI_API_KEY = "AIzaSyDyl3Q6feLt4okO2Ci3F-GwcZg8ynxrSHQ"
+GEMINI_API_KEY = ""
 genai.configure(api_key=GEMINI_API_KEY)
 
 
