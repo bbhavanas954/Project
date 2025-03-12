@@ -1,0 +1,211 @@
+/* Import futuristic font */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+body {
+    background: radial-gradient(circle, #0f0c29, #302b63, #24243e);
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Neon Header */
+.neon-text {
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #00f;
+    margin-top: 20px;
+}
+
+/* Feature Images */
+.image-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature-image {
+    width: 150px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    filter: drop-shadow(0 0 15px #0ff);
+}
+
+.feature-image:hover {
+    transform: scale(1.1);
+}
+
+/* Navigation Buttons */
+.nav-container {
+    margin-top: 50px;
+}
+
+.nav-btn, .logout-btn {
+    display: inline-block;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: 0.3s ease-in-out;
+    margin: 10px;
+}
+
+.nav-btn {
+    background: linear-gradient(45deg, #06d6a0, #118ab2);
+    color: white;
+    box-shadow: 0 0 15px #06d6a0;
+}
+
+.logout-btn {
+    background: linear-gradient(45deg, #d7263d, #ff1654);
+    color: white;
+    box-shadow: 0 0 15px #d7263d;
+}
+
+.nav-btn:hover, .logout-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #0ff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .image-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature-image {
+        width: 100px;
+    }
+
+    .nav-btn {
+        font-size: 1rem;
+        padding: 12px 30px;
+    }
+}
+
+/* Import futuristic font */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+body {
+    background: radial-gradient(circle, #0f0c29, #302b63, #24243e);
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Neon Header */
+.neon-text {
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #00f;
+    margin-top: 20px;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    text-align: center;
+}
+
+/* Navigation Bar */
+.navbar {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 15px #0ff;
+}
+
+.navbar h2 {
+    color: white;
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+/* Feature Images */
+.image-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature-image {
+    width: 150px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    filter: drop-shadow(0 0 15px #0ff);
+}
+
+.feature-image:hover {
+    transform: scale(1.1);
+}
+
+/* Navigation Buttons */
+.nav-container {
+    margin-top: 50px;
+}
+
+.nav-btn, .logout-btn {
+    display: inline-block;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: 0.3s ease-in-out;
+    margin: 10px;
+}
+
+/* Navigation Button */
+.nav-btn {
+    background: linear-gradient(45deg, #06d6a0, #118ab2);
+    color: white;
+    box-shadow: 0 0 15px #06d6a0;
+}
+.nav-btn:hover, .logout-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #0ff;
+}
+
+footer {
+    position: fixed;  /* Stick to the bottom */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgb(18, 18, 18);  /* Grey background */
+    color: white;
+    text-align: center;  /* Center the text */
+    font-size: 12px;  /* Smaller font */
+    padding: 0;  /* Remove extra padding */
+    height: 30px;  /* Adjust footer height */
+    display: flex;
+    align-items: center;  /* Align text vertically */
+    justify-content: center;  /* Align text horizontally */
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .image-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature-image {
+        width: 100px;
+    }
+
+    .nav-btn {
+        font-size: 1rem;
+        padding: 12px 30px;
+    }
+}

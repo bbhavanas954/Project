@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Syllabus PDF</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='upload.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .unit-title {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Upload Syllabus PDF</h2>
+        <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".pdf" required>
+            <button type="submit">Upload</button>
+        </form>
+
+        {% if generating %}
+            <p id="loading">Generating Questions... Please wait.</p>
+        {% endif %}
+
+        {% if questions %}
+            <h3>Generated Questions</h3>
+            {% for question in questions %}
+                {% if question.startswith("UNIT") %}
+                    <p class="unit-title"><strong><u>{{ question | safe }}</u></strong></p>
+                {% else %}
+                <p style="margin-bottom: 20px;">{{ question }}</p>
+                {% endif %}
+            {% endfor %}
+
+            <!-- Download Button -->
+            <a href="{{ url_for('download') }}" download>
+                <button>Download Questions PDF</button>
+            </a>
+        {% endif %}
+    </div>
+    <a href="{{ url_for('home') }}" class="home-btn">🏠 Back to Home</a>
+    <footer class="footer">
+        <p>🚀 AI Exam System | © 2025 All Rights Reserved</p>
+    </footer>
+</body>
+</html>

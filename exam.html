@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛡 AI Cheating Prevention - Online Exam</title>
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+            background: #f4f4f4;
+        }
+        h2 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #ffebcc;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .alert {
+            padding: 12px;
+            border-radius: 5px;
+            display: none;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 20px;
+        }
+        .warning {
+            background-color: #ffcc00;
+            color: black;
+        }
+        .danger {
+            background-color: #ff4444;
+            color: white;
+        }
+        .question-container {
+            background: #fff;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h2>🛡 AI Cheating Prevention System</h2>
+    <div id="alert" class="alert"></div>
+    <button onclick="startExam()">▶ Start Exam</button>
+    <p>🚨 **Cheating Prevention Active!**</p>
+    <ul>
+        <li>📷 **Face tracking enabled**</li>
+        <li>🚫 **Tab switching detection active**</li>
+        <li>📱 **Mobile phone detection enabled**</li>
+        <li>👨‍👩‍👦 **Multiple people detection active**</li>
+        <li>🔴 **Redirect to dashboard after multiple violations**</li>
+    </ul>
+    <h3>📚 General Knowledge Quiz</h3>
+    <div id="questions">
+        <!-- Voice Exam Questions will be rendered here -->
+    </div>
+    <button onclick="submitExam()">✅ Submit Exam</button>
+    <script>
+        // Voice Exam Questions API
+        const voiceExamQuestions = [];
+        fetch('/voice_exam_questions')
+            .then(response => response.json())
+            .then(data => {
+                voiceExamQuestions = data;
+                renderVoiceExamQuestions();
+            });
+
+        function renderVoiceExamQuestions() {
+            const questionsContainer = document.getElementById('questions');
+            questionsContainer.innerHTML = '';
+            voiceExamQuestions.forEach((question, index) => {
+                const questionContainer = document.createElement('div');
+                questionContainer.classList.add('question-container');
+                questionContainer.innerHTML = `
+                    <p>${index + 1}️⃣ ${question}</p>
+                    <input type="text" id="answer-${index}" placeholder="Type your answer">
+                `;
+                questionsContainer.appendChild(questionContainer);
+            });
+        }
+
+        // Start Exam
+        function startExam() {
+            fetch('/start_exam', { method: 'POST' })
+                .then(() => {
+                    alert('✅ Exam Started. AI Monitoring Active.');
+                    socket.emit('exam_started');
+                    startCameraAccess();
+                });
+        }
+
+        // Submit Exam
+        function submitExam() {
+            const answers = [];
+            voiceExamQuestions.forEach((question, index) => {
+                const answerInput = document.getElementById(`answer-${index}`);
+                answers.push(answerInput.value);
+            });
+            fetch('/submit_exam', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ answers }),
+            })
+                .then(() => {
+                    alert('📜 Exam Submitted. AI Monitoring Stopped.');
+                    socket.emit('exam_ended');
+                });
+        }
+
+        // ... (rest of the script remains the same)
+    </script>
+</body>
+</html>

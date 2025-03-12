@@ -1,0 +1,182 @@
+/* Import Futuristic Font */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+body {
+    background: radial-gradient(circle, #0f0c29, #302b63, #24243e);
+    color: rgb(19, 19, 19);
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Main Container */
+.container {
+    max-width: 700px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    text-align: center;
+}
+
+/* Headings */
+h2, h3 {
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #00f;
+    margin-bottom: 15px;
+}
+
+/* File Upload Input */
+input[type="file"] {
+    padding: 10px;
+    border: 2px solid #0ff;
+    border-radius: 5px;
+    background-color: #f7f2f2;
+    color: rgb(23, 22, 22);
+    cursor: pointer;
+    margin-bottom: 15px;
+    box-shadow: 0 0 10px #0ff;
+}
+
+/* Buttons */
+button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+    color: rgb(16, 16, 16);
+    margin: 10px;
+}
+
+/* Upload Button */
+button.upload-btn {
+    background: linear-gradient(45deg, #06d6a0, #118ab2);
+    box-shadow: 0 0 15px #06d6a0;
+}
+button.upload-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #0ff;
+}
+
+/* Start Speaking Button */
+button.speak-btn {
+    background: linear-gradient(45deg, #ff8c00, #ff4500);
+    box-shadow: 0 0 15px #ff8c00;
+}
+button.speak-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #ff4500;
+}
+
+/* Submit Answer Button */
+button.submit-btn {
+    background: linear-gradient(45deg, #d7263d, #ff1654);
+    box-shadow: 0 0 15px #d7263d;
+}
+button.submit-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #ff1654;
+}
+
+/* Generated Questions List */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: rgba(255, 255, 255, 0.1);
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+li:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    transform: scale(1.05);
+}
+
+/* Spoken Answer Display */
+#spokenText {
+    font-size: 1.2rem;
+    color: #ffcc00;
+    font-weight: bold;
+    text-shadow: 0 0 10px #ffcc00;
+}
+
+/* Grading Result */
+#gradingResult {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: #06d6a0;
+    font-weight: bold;
+    text-shadow: 0 0 10px #06d6a0;
+}
+
+#answer {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: #0d0e0e;
+    font-weight: bold;
+    text-shadow: 0 0 10px #15a8de;
+}
+/* Back to Home Button */
+.home-btn {
+    display: inline-block;
+    padding: 05px 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: rgb(15, 15, 15);
+    background: linear-gradient(45deg, #ff8c00, #ff4500);
+    text-decoration: none;
+    border-radius: 30px;
+    transition: 0.3s;
+    box-shadow: 0 0 15px #ff8c00;
+    margin-top: 20px;
+}
+
+.home-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #ff4500;
+}
+
+/* Footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgb(18, 18, 18);
+    color: rgb(251, 251, 251);
+    text-align: center;
+    font-size: 12px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+    }
+
+    .home-btn {
+        font-size: 1rem;
+        padding: 10px 25px;
+    }
+}

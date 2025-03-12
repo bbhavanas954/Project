@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Exam Monitoring</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+            background: #f4f4f4;
+        }
+        h2 { color: #333; }
+        ul { list-style-type: none; padding: 0; }
+        li {
+            background: #f8d7da;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .alert {
+            padding: 12px;
+            border-radius: 5px;
+            display: none;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .warning { background-color: #ffcc00; color: black; }
+        .danger { background-color: #ff4444; color: white; }
+    </style>
+    <script>
+        const socket = io();
+        let faceViolations = 0;
+        let tabSwitches = 0;
+        const MAX_FACE_VIOLATIONS = 10;
+        const MAX_TAB_SWITCHES = 3;
+
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                tabSwitches++;
+                socket.emit("tab_switch_detected");
+                showAlert(`⚠️ Tab Switching Detected! (${tabSwitches}/${MAX_TAB_SWITCHES})`, "warning");
+
+                if (tabSwitches >= MAX_TAB_SWITCHES) {
+                    logoutStudent("🚨 Exam Terminated: Too many tab switches!");
+                }
+            }
+        });
+
+        function showAlert(message, type = "warning") {
+            const alertBox = document.getElementById("alert");
+            alertBox.innerText = message;
+            alertBox.className = `alert ${type}`;
+            alertBox.style.display = "block";
+            setTimeout(() => { alertBox.style.display = "none"; }, 5000);
+        }
+
+        async function fetchLogs() {
+            try {
+                let response = await fetch("/get_logs");
+                let logs = await response.json();
+                document.getElementById("logs").innerHTML = logs.map(log =>
+                    `<li>${log.timestamp} - ${log.event}</li>`
+                ).join("");
+            } catch (error) {
+                console.error("Error fetching logs:", error);
+            }
+        }
+
+        socket.on("new_suspicious_activity", function(data) {
+            fetchLogs();
+            if (data.event.startsWith("Student is Looking") || data.event === "No face detected!") {
+                faceViolations++;
+                showAlert(`⚠️ Face Tracking Warning! (${faceViolations}/${MAX_FACE_VIOLATIONS})`, "warning");
+
+                if (faceViolations >= MAX_FACE_VIOLATIONS) {
+                    logoutStudent("🚨 Exam Terminated: Too many face tracking violations!");
+                }
+            }
+        });
+
+        socket.on("logout_student", function() {
+            logoutStudent("🚨 You have been logged out due to excessive violations.");
+        });
+
+        function logoutStudent(reason) {
+            alert(reason);
+            window.location.href = "https://www.google.com";
+        }
+
+        window.onload = fetchLogs;
+    </script>
+</head>
+<body>
+    <h2>AI Cheating Prevention System</h2>
+    <div id="alert" class="alert"></div>
+    <p>🚫 Stay on this page and keep your face visible at all times.</p>
+    <h3>Suspicious Activity Logs</h3>
+    <ul id="logs"></ul>
+</body>
+</html>

@@ -1,0 +1,18 @@
+[
+    {
+        "timestamp": "2025-03-07 20:26:42",
+        "event": "User switched tab"
+    },
+    {
+        "timestamp": "2025-03-07 20:26:44",
+        "event": "User switched tab"
+    },
+    {
+        "timestamp": "2025-03-07 20:26:45",
+        "event": "User switched tab"
+    },
+    {
+        "timestamp": "2025-03-07 20:26:45",
+        "event": "\ud83d\udea8 Student Logged Out due to 3 Tab Switches"
+    }
+]

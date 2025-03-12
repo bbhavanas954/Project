@@ -1,0 +1,129 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Login Container */
+.login-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    width: 350px;
+    text-align: center;
+}
+
+/* Headings */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px cyan, 0 0 10px blue;
+}
+
+/* Labels */
+label {
+    font-size: 1rem;
+    display: block;
+    margin: 10px 0 5px;
+    text-align: left;
+    color: white;
+}
+
+/* Input Fields */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 1rem;
+}
+
+/* Placeholder Text */
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Login Button */
+button {
+    background: linear-gradient(45deg, #06d6a0, #118ab2);
+    color: white;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 100%;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px cyan;
+}
+
+/* Sign Up Link */
+a {
+    display: block;
+    margin-top: 15px;
+    color: cyan;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.home-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, #ff8c00, #ff4500);
+    text-decoration: none;
+    border-radius: 30px;
+    transition: 0.3s;
+    box-shadow: 0 0 15px #ff8c00;
+    margin-top: 20px;
+}
+
+.home-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #ff4500;
+}
+
+/* Footer Styles */
+footer {
+    position: fixed;  /* Stick to the bottom */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgb(18, 18, 18);  /* Grey background */
+    color: white;
+    text-align: center;  /* Center the text */
+    font-size: 12px;  /* Smaller font */
+    padding: 0;  /* Remove extra padding */
+    height: 30px;  /* Adjust footer height */
+    display: flex;
+    align-items: center;  /* Align text vertically */
+    justify-content: center;  /* Align text horizontally */
+}

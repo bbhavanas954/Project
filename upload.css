@@ -1,0 +1,162 @@
+/* Import futuristic font */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+body {
+    background: radial-gradient(circle, #0f0c29, #302b63, #24243e);
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Upload Container */
+.container {
+    max-width: 600px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    margin: 50px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    text-align: center;
+}
+
+/* Page Title */
+h2 {
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #00f;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+/* File Input */
+input[type="file"] {
+    padding: 12px;
+    border: 2px solid #0ff;
+    border-radius: 5px;
+    background-color: #111;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 10px #0ff;
+}
+
+/* Upload Button */
+button {
+    padding: 12px 20px;
+    background: linear-gradient(45deg, #06d6a0, #118ab2);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 15px #06d6a0;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #0ff;
+}
+
+/* Generating Message */
+#loading {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #ffcc00;
+    text-shadow: 0 0 10px #ffcc00;
+}
+
+/* Generated Questions */
+h3 {
+    font-size: 1.8rem;
+    color: #fff;
+    text-shadow: 0 0 10px #0ff;
+}
+
+/* Unit Titles */
+.unit-title {
+    font-weight: bold;
+    font-size: 1.4em;
+    margin-top: 20px;
+    text-decoration: underline;
+    color: #0ff;
+}
+
+/* Download Button */
+a button {
+    background: linear-gradient(45deg, #28a745, #1f8b4c);
+    box-shadow: 0 0 15px #28a745;
+}
+
+a button:hover {
+    background: linear-gradient(45deg, #1f8b4c, #28a745);
+    box-shadow: 0 0 25px #0ff;
+}
+
+.home-btn {
+    display: inline-block;
+    padding: 05px 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, #ff8c00, #ff4500);
+    text-decoration: none;
+    border-radius: 30px;
+    transition: 0.3s;
+    box-shadow: 0 0 15px #ff8c00;
+    margin-top: 20px;
+}
+
+.home-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #ff4500;
+}
+
+/* Footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgb(18, 18, 18);
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    input[type="file"] {
+        width: 80%;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 12px 30px;
+    }
+
+    .home-btn {
+        font-size: 1rem;
+        padding: 10px 25px;
+    }
+}

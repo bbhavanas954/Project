@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <h2 class="sidebar-title">Dashboard</h2>
+            <nav class="sidebar-nav">
+                <a href="{{ url_for('upload') }}" class="sidebar-link">📄 AI Question Bank</a>
+                <a href="{{ url_for('voice_exam') }}" class="sidebar-link">🎤 AI Voice Exam</a>
+                <a href="{{ url_for('exam') }}" class="sidebar-link">🚨Cheating Prevention</a>
+                <a href="{{ url_for('logout') }}" class="sidebar-link logout-btn">🚪 Logout</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-content">
+            <h1 class="neon-text">Welcome to the AI Exam Dashboard</h1>
+            <p>Select an option from the sidebar to continue.</p>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>🚀 AI Exam System | © 2025 All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>

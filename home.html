@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Exam System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="header-content">
+            <h1 class="neon-text">Welcome to AI Exam System</h1>
+        </div>
+    </header>
+
+    <!-- AI Feature Images -->
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='OCR.png') }}" alt="OCR AI" class="feature-image">
+        <img src="{{ url_for('static', filename='Speech.png') }}" alt="Speech AI" class="feature-image">
+        <img src="{{ url_for('static', filename='OIP.png') }}" alt="AI Avatar" class="feature-image">
+        <img src="{{ url_for('static', filename='download.png') }}" alt="AI Avatar" class="feature-image">
+    </div>
+
+    <nav class="nav-container">
+        <a href="{{ url_for('signup') }}" class="nav-btn">Sign Up</a>
+        <a href="{{ url_for('login') }}" class="nav-btn">Login</a>
+    </nav>
+    <footer class="footer">
+        <p>🚀 AI Exam System | © 2025 All Rights Reserved</p>
+    </footer>
+</body>
+</html>

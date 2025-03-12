@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Voice Answering System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='voice_exam.css') }}">
+</head>
+<body>
+    <h2>Upload PDF to Generate Questions</h2>
+    <input type="file" id="pdfUpload">
+    <button onclick="uploadPDF()">Upload & Generate Questions</button>
+
+    <h3>Generated Questions:</h3>
+    <ul id="questionsList"></ul>
+
+    <h3>Speak Your Answer:</h3>
+    <button onclick="startListening()">Start Speaking</button>
+    <p><strong>Answer:</strong> <span id="spokenText"></span></p>
+    <button onclick="submitAnswer()">Submit Answer</button>
+
+    <p id="gradingResult"></p>
+
+    <script>
+        let questions = [];
+        let currentIndex = 0;
+        let spokenText = "";
+
+        async function uploadPDF() {
+            let fileInput = document.getElementById("pdfUpload");
+            let formData = new FormData();
+            formData.append("file", fileInput.files[0]);
+
+            let response = await fetch("/upload_pdf", { method: "POST", body: formData });
+            let data = await response.json();
+
+            questions = data.questions;
+            currentIndex = 0;
+
+            if (questions.length > 0) {
+                alert("Questions generated! Starting the quiz.");
+                askQuestion();
+            }
+        }
+
+        function askQuestion() {
+            if (currentIndex < questions.length) {
+                alert("Question: " + questions[currentIndex]);
+            } else {
+                alert("All questions completed.");
+            }
+        }
+
+        function startListening() {
+            let recognition = new (window.webkitSpeechRecognition || window.SpeechRecognition)();
+            recognition.lang = "en-US";
+            recognition.start();
+
+            recognition.onresult = (event) => {
+                spokenText = event.results[0][0].transcript;
+                document.getElementById("spokenText").innerText = spokenText;
+            };
+        }
+
+        async function submitAnswer() {
+            let answer = spokenText.trim();
+
+            let response = await fetch("/submit_answer", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ answer })
+            });
+
+            let data = await response.json();
+            document.getElementById("gradingResult").innerText = data.next_question || data.final_score;
+
+            if (data.next_question) {
+                currentIndex++;
+                askQuestion();
+            }
+        }
+    </script>
+</body>
+</html>
